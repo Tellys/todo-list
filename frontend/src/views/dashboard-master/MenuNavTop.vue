@@ -11,7 +11,7 @@
     <div class="p-2 bd-highlight">
       <router-link to="/">
         <picture>
-          <img src="@/assets/images/logo-beach-tennis[horizontal].png" width="150" alt="{{ `${process.env.VUE_APP_NAME}` }}" />
+          <img src="@/assets/images/logo/logo.png" width="150" alt="{{ `${process.env.VUE_APP_NAME}` }}" />
         </picture>
       </router-link>
     </div>
