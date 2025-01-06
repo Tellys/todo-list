@@ -13,24 +13,7 @@
           <div class="row my-3">
             <div class="col-md-8 offset-md-2 align-items-center">
 
-              <div role="button" v-if="geolocation" @click="fechItemsCloseToMe()"
-                class="d-flex justify-content-center align-items-center p-2 border border-5 rounded-pill"
-                style="min-width: 80px; min-height: 80px;">
-                <div class="me-2">
-                  <IconFileSvg icon="quadra_location" height="40px" width="40px" bgColor="#083B54"></IconFileSvg>
-                </div>
-
-                <div class="text-center">Quadras Próximas de Você</div>
-
-              </div>
-
-              <div v-else id="tagFormGeolocation" class="btn-animate-border d-flex justify-content-center align-items-center p-2 border border-5 rounded-pill"
-                style="min-width: 80px; min-height: 80px;">
-                <div class="me-2">
-                  <IconFileSvg icon="quadra_location" height="40px" width="40px" bgColor="#083B54"></IconFileSvg>
-                </div>
-                <SearchLocalGoogle></SearchLocalGoogle>
-              </div>
+              <i class="fa-solid fa-magnifying-glass"></i> Buscar
 
             </div>
 
@@ -42,18 +25,18 @@
             <div class="col-6 col-md-4 offset-md-2" role="button" @click="goToRoute('tennisCourtPlayLoad')">
               <div class="d-flex flex-column flex-md-row align-items-center p-4">
                 <div class="p-3 me-md-3 rounded-circle" style="background-color: #C3FF7F">
-                  <IconFileSvg icon="quadra_lupa" height="40px" width="40px" bgColor="#141414"></IconFileSvg>
+                  <i class="fa-solid fa-circle-plus" style="color:#141414"></i>
                 </div>
-                <div class="text-center">Procurar Quadras</div>
+                <div class="text-center">Adicionar Tarefa</div>
               </div>
             </div>
 
             <div class="col-6 col-md-4" role="button" @click="goToRoute('dashboardTennisCourtCreate')">
               <div class="d-flex flex-column flex-md-row align-items-center p-4">
                 <div class="p-3 me-md-3 rounded-circle" style="background-color: #FF7665">
-                  <IconFileSvg icon="quadra_add" height="40px" width="40px" bgColor="#141414"></IconFileSvg>
+                  <i class="fa-solid fa-calendar-day" style="color:#141414"></i>
                 </div>
-                <div class="text-center">Cadastrar Quadras</div>
+                <div class="text-center">Hoje</div>
               </div>
             </div>
 
@@ -64,18 +47,27 @@
             <div class="col-6 col-md-4 offset-md-2" role="button">
               <div class="d-flex flex-column flex-md-row align-items-center p-4">
                 <div class="p-3 me-md-3 rounded-circle" style="background-color: #FFE897">
-                  <IconFileSvg icon="player_add_new" height="40px" width="40px" bgColor="#141414"></IconFileSvg>
+                  <i class="fa-regular fa-calendar-days" style="color:#141414"></i>
                 </div>
-                <div class="text-center">Formar Time</div>
+                <div class="text-center">Em Breve</div>
               </div>
             </div>
 
             <div class="col-6 col-md-4" role="button">
               <div class="d-flex flex-column flex-md-row align-items-center p-4">
                 <div class="p-3 me-md-3 rounded-circle" style="background-color: #BFEBFF">
-                  <IconFileSvg icon="player_trofeu_lupa" height="40px" width="40px" bgColor="#141414"></IconFileSvg>
+                  <i class="fa-solid fa-tags" style="color:#141414"></i>
                 </div>
-                <div class="text-center">Torneios</div>
+                <div class="text-center">Filtros de etiquetas</div>
+              </div>
+            </div>
+
+            <div class="col-6 col-md-4" role="button">
+              <div class="d-flex flex-column flex-md-row align-items-center p-4">
+                <div class="p-3 me-md-3 rounded-circle" style="background-color: #BFEBFF">
+                  <i class="fa-solid fa-people-group" style="color:#141414"></i>
+                </div>
+                <div class="text-center">Adicionar equipe</div>
               </div>
             </div>
 
@@ -106,12 +98,6 @@ export default {
   components: {
     templateView: defineAsyncComponent(() =>
       import('@/views/template/Template.vue')
-    ),
-    IconFileSvg: defineAsyncComponent(() =>
-      import('@/components/icons/IconFileSvg.vue')
-    ),
-    SearchLocalGoogle: defineAsyncComponent(() =>
-      import('@/components/homeDefault/searchLocalGoogle.vue')
     ),
   },
 
