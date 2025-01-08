@@ -34,6 +34,9 @@ return [
     */
 
     'mailers' => [
+        'maitrap'=>[
+            'transport' => 'maitrap',
+        ],
         'smtp' => [
             'transport' => 'smtp',
             'host' => env('MAIL_HOST', 'smtp.mailgun.org'),

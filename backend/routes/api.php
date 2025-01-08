@@ -30,7 +30,7 @@ Route::get('user/reset-password', 'App\Http\Controllers\Api\UserController@reset
 Route::post('user/reset-password/{token}/{email}', 'App\Http\Controllers\Api\UserController@resetPassword');
 Route::post('user/save-for-auth-social-media', 'App\Http\Controllers\Api\UserController@saveForAuthSocialMedia');
 Route::get('user/create-simple', 'App\Http\Controllers\Api\UserController@createSimple');
-Route::resource('user', UserController::class)->only(['create', 'store']);
+Route::customResource('user', \App\Http\Controllers\Api\UserController::class);//->only(['create', 'store', 'uploadTemporary', 'removeTemporary']);
 
 /**
  * auth with sanctum
@@ -43,15 +43,16 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('user/verify-email/{url}', 'App\Http\Controllers\Api\EmailVerificationController@verify');
     Route::get('email/verification-notification', 'App\Http\Controllers\Api\EmailVerificationController@sendVerificationEmail');
     Route::get('verify-email/{id}/{hash}', 'App\Http\Controllers\Api\EmailVerificationController@verify')->name('verification.verify');
-    Route::customResource('user', UserController::class)->except(['create', 'store']);
+    //Route::customResource('user', \App\Http\Controllers\Api\UserController::class);//->except(['create', 'store']);
+    //Route::customResource('user', \App\Http\Controllers\Api\UserController::class)->only(['show', 'list', 'all', 'search', 'update', 'destroy', 'forceDelete', 'restore']);   
 
     Route::get('message-read', 'App\Http\Controllers\Api\MessageController@messageRead');
     Route::get('message-not-read', 'App\Http\Controllers\Api\MessageController@messageNotRead');
     Route::get('message/read-all', 'App\Http\Controllers\Api\MessageController@readAll');
-    Route::customResource('message', MessageController::class);
+    Route::customResource('message', \App\Http\Controllers\Api\MessageController::class);
 
-    Route::customResource('cnae', CnaeController::class);
-    Route::customResource('user-cnae', UserCnaeController::class);
+    Route::customResource('cnae', \App\Http\Controllers\Api\CnaeController::class);
+    Route::customResource('user-cnae', \App\Http\Controllers\Api\UserCnaeController::class);
 
     Route::get('task/list-items-to-user-id/{user_id?}', '\App\Http\Controllers\Api\TaskController@listItemsToUserId');
     Route::customResource('task', \App\Http\Controllers\Api\TaskController::class); 

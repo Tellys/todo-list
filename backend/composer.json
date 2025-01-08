@@ -44,7 +44,6 @@
         "laravel/framework": "^11.0",
         "laravel/reverb": "^1.0",
         "laravel/sanctum": "^4.0",
-        "laravel/telescope": "^5.2",
         "laravel/tinker": "^2.7"
     },
     "require-dev": {

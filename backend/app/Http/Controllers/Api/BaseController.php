@@ -6,7 +6,6 @@ use App\Classes\NossaClasse;
 use App\Classes\MyResponse;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RequestFrm;
-use App\Models\Slug;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -298,40 +297,30 @@ class BaseController extends Controller
      */
     public function store(RequestFrm $request)
     {
+//        dd($request->all());
         //chama a função para acrescimo da restrição das permissões, se for o caso.
         $this->isRestrict();
 
         $request->merge($this->myTraits($request));
 
+        // $NossaClasse = new NossaClasse();
+        // dd($NossaClasse->colunasValidate($this->data['campos']));
+
         // validação dos dados
-        $NossaClasse = new NossaClasse();
-        $request->validate(
-            $NossaClasse->colunasValidate($this->data['campos'])
-        );
+        // $NossaClasse = new NossaClasse();
+        // $request->validate(
+        //     $NossaClasse->colunasValidate($this->data['campos'])
+        // );
+
+        // dd($request->all());
 
         try {
 
-            $user_id = auth('sanctum')->user()->id;
+            $user_id = auth('sanctum')->user()->id ?? 1;
             $request->merge(['user_id' => $user_id]);
 
             if (!empty($request->password)) {
                 $request->merge(['password' => bcrypt($request->password)]);
-            }
-
-            //slug
-            if ($request->has('slug')) {
-
-                $slug = $request->slug;
-
-                if (empty($request->slug)) {
-                    $slug = url($this->createSlug($this->PathsRoute) . '/' . uniqid());
-                }
-
-                if (Slug::where('redirect', $slug)->first()) {
-                    $slug .= '-' . uniqid();
-                }
-
-                $request->merge(['slug' => $slug]);
             }
 
             //$r = $request->except(['image', 'urlReturn', 'slug']);
@@ -339,55 +328,18 @@ class BaseController extends Controller
 
             $q = $this->Model->create($r);
 
-            //slug
-            if ($request->has('slug')) {
-                Slug::create([
-                    'name' => (string) route($this->PathsRoute . '.show', $q->id),
-                    'redirect' => (string) $request->slug,
-                    'user_id' => (int) $user_id,
-                    //'module'=> (string) last(explode('\\', get_class($this))),
-                    'module' => (string) get_class($this),
-                    'module_id' => (int) $q->id,
-                ]);
-            }
-
             $this->return = $q;
             $this->status = 200;
             $this->message = 'Item CRIADO com sucesso!';
             return $this->returnSuccess();
         } catch (\Exception $e) {
+
+            dd($e);
             $this->message = $e; //$e->getMessage();
             $this->status = $e;
         }
 
         return $this->returnError();
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function mySlug($slug)
-    {
-        //chama a função para acrescimo da restrição das permissões, se for o caso.
-        $this->isRestrict();
-
-        try {
-            $r = Slug::where('redirect', url()->to('/') . '/' . $slug)->firstOrFail(); //->first()->toArray()
-            return (new $r->module())->show($r->module_id);
-            if (!$r) {
-                $this->message = 'Item não localizado ou não existente em nosso banco de dados';
-                $this->status = 200;
-                return $this->sendResponse($r, $this->message, $this->status);
-            }
-        } catch (\Exception $e) {
-            $this->message = $e;
-            'Erro ao pesquisar o item. Provavelmente não existe em nosso banco de dados.';
-            $this->status = $e;
-        }
-        return $this->sendError($this->message, $this->status);
     }
 
     public function show($id)
@@ -542,32 +494,6 @@ class BaseController extends Controller
                 //return $this->sendResponse($q, $this->message, $this->status);
             }
 
-            //slug
-            if ($request->has('slug')) {
-
-                if (empty($request->slug)) {
-                    $request->merge(
-                        [
-                            'slug' => url(
-                                $this->createSlug($this->PathsRoute)
-                                    . '/' . $q->id
-                            )
-                        ]
-                    );
-                }
-
-                if (!Slug::where('redirect', '=', $request->slug)->first()) {
-                    Slug::create([
-                        'name' => (string) route($this->PathsRoute . '.show', $q->id),
-                        'redirect' => (string) $request->slug,
-                        'user_id' => (int) $user_id,
-                        //'module'=> (string) last(explode('\\', get_class($this))),
-                        'module' => (string) get_class($this),
-                        'module_id' => (int) $q->id,
-                    ]);
-                }
-            }
-
             $r = $request->except($except);
 
             $q->update($r);
@@ -644,12 +570,6 @@ class BaseController extends Controller
                 throw new \Exception('Ocorreu um erro, verifique se o item para LIXEIRA ou tente novamente. Ou vocÊ não tem essa permissão!');
             }
 
-            //slug
-            $qSlug = $q->get();
-            if (!empty($qSlug->slug)) {
-                Slug::where('slug', $qSlug->slug)->delete();
-            }
-
             $q->delete();
             $this->status = 200;
             $this->message = 'Item para LIXEIRA com sucesso!';
@@ -671,11 +591,6 @@ class BaseController extends Controller
 
         try {
             $r = $this->Model->withTrashed()->findOrFail($id);
-
-            //slug
-            if (!empty($r->slug)) {
-                Slug::where('slug', $r->slug)->delete();
-            }
 
             $r->restore();
 
@@ -735,11 +650,6 @@ class BaseController extends Controller
                     )
                     )
                 );
-            }
-
-            //slug
-            if (!empty($q2->slug)) {
-                Slug::where('redirect', $q2->slug)->delete();
             }
 
             $q->forceDelete();
