@@ -251,7 +251,7 @@ export default {
             }
 
             let myFormMethod = 'create';
-            let uriToSubmit = (this.myUri.split('/'))[0];
+            let uriToSubmit = (this.myUri.split('/'))[0]; 
             if (this.myFormMethod == 'put' || this.myFormMethod == 'patch') {
                 uriToSubmit = (this.myUri.split('/'))[0] + '/' + (this.myUri.split('/'))[1];
                 myFormMethod = 'update';
@@ -260,6 +260,8 @@ export default {
             if (this.myUriToSubmit) {
                 uriToSubmit = this.myUriToSubmit
             }
+
+            console.log('myFormMethod,uriToSubmit',myFormMethod,uriToSubmit, this.rollbackMask(formData));
 
             let bkpFormData = formData;
 

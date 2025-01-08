@@ -16,10 +16,10 @@
             <div class="mt-auto col-md-7 col-lg-5">
                 <div class="bg-white p-4 rounded-top shadow-lg ">
                     <div class="row d-flex align-items-center justify-content-center h-100">
-                        <h1 class="text-center">Cadastre-se</h1>
+                        <h1 class="text-center">Cadastre-se aa</h1>
                         <p class="text-center">Casdastre-se para ter acesso aos conteúdos.</p>
 
-                        <DynamicForm myUri="user/create-simple" myFormMethod="post"></DynamicForm>
+                        <DynamicForm myUri="user/create-simple"></DynamicForm>
                     </div>
                 </div>
             </div>

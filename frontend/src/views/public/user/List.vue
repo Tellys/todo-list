@@ -9,7 +9,6 @@
 
     <template v-slot:slotTitlePage>
       <div class="p-2" style="background-color: silver;">
-        <IconFileSvg icon="quadra_lupa" height="50px" width="50px" bgColor="#083B54"></IconFileSvg>
         <h1>Usuários</h1>
         <p>Use os filtros para refinar sua pesquisa</p>
       </div>
@@ -26,9 +25,6 @@ export default {
     components: {
     templateView: defineAsyncComponent(() =>
       import('@/views/template/Template.vue')
-    ),
-    IconFileSvg: defineAsyncComponent(() =>
-      import('@/components/icons/IconFileSvg.vue')
     ),
     ListComponentVue: defineAsyncComponent(() =>
       import('@/components/ListComponent.vue')

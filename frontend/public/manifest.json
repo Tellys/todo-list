@@ -1,7 +1,7 @@
 {
-    "name": "BT APP",
-    "short_name": "Beach Tennis App",
-    "description": "Beach Tennis App",
+    "name": "Todo List",
+    "short_name": "Todo List",
+    "description": "Todo List",
     "icons": [
         {
             "src": "/assets/theme/icons/apple-icon-120x120.png",
