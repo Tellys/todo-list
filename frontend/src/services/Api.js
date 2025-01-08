@@ -1,9 +1,6 @@
-//import axios from "../axios";
 import axios from "axios";
 import store from "@/store";
 import router from "@/router";
-// import FacebookAuth from "./authSocialMeida/FacebookAuth";
-// import GoogleAuth from "./authSocialMeida/GoogleAuth";
 import MyAlert from "./MyAlert";
 import CacheCollection from "./CacheCollection";
 
@@ -13,24 +10,6 @@ const http = axios.create({
     //   //Accept: "application/json",
     // },
 });
-
-//http.defaults.headers.common['Accept'] = 'application/json';
-//http.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
-// http.defaults.headers.common['Access-Control-Allow-Headers'] = '*';
-// http.defaults.headers.common['Access-Control-Allow-Credentials'] = 'true';
-// http.defaults.withCredentials = true;
-// http.defaults.withXSRFToken = true;
-//http.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-
-
-// Override timeout default for the library
-// Now all requests using this instance will wait 2.5 seconds before timing out
-//instance.defaults.timeout = 2500;
-
-// Override timeout for this request as it's known to take a long time
-// instance.get('/longRequest', {
-//   timeout: 5000
-// });
 
 http.interceptors.request.use((config) => {
     store.commit("loading/setLoading", true);
@@ -590,14 +569,7 @@ class Api {
             this.api.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
             this.api.defaults.headers.common['Content-Type'] = contentType;
 
-            //this.api.defaults.headers.common['Content-Type'] = 'application/json';         
-            //this.api.defaults.headers.common['Content-Type']= 'multipart/form-data';
-
-            // this.api.defaults.headers.common['Accept'] = 'application/json';
             this.api.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
-            // this.api.defaults.headers.common['Access-Control-Allow-Headers'] = '*';
-            // this.api.defaults.headers.common['Access-Control-Allow-Credentials'] = 'true';
-            // this.api.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
         }
         return;
     }

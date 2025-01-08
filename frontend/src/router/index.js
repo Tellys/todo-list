@@ -65,24 +65,4 @@ router.beforeEach((to, from, next) => {
   else return next();
 });
 
-/* router.beforeEach((to, from, next) => {
-
-  //checa se url pede meta = authOnly
-  if (to.matched.some(record => record.meta.authOnly)) {
-
-    // check user logged
-    if (!Api.isLoggedIn()) {
-
-      return next({
-        path: "/login",
-        query: { redirect: to.fullPath }
-      });
-    }
-    // encaminha a proxima call
-    //return next();
-  }
-
-  // encaminha a proxima call
-  else return next();
-}); */
 export default router

@@ -23,6 +23,36 @@ return new class extends Migration
         Schema::table('tasks', function (Blueprint $table) {
             $table->foreignId("tag_id")->nullable()->constrained();
         });
+
+        //
+        Schema::table('users', function (Blueprint $table) {
+            $table->foreignId('user_id')->nullable()->constrained();
+            $table->foreignId("users_level_id")->nullable()->default(4)->constrained();
+        });
+
+        Schema::table('config_sistems', function (Blueprint $table) {
+            $table->foreignId('user_id')->nullable()->constrained();
+        });
+
+        Schema::table('user_level_roles', function (Blueprint $table) {
+            $table->foreignId("users_level_id")->nullable()->constrained();
+            $table->foreignId("user_id")->constrained()->nullable();
+        });
+
+        Schema::table('cnaes', function (Blueprint $table) {
+            $table->foreignId("user_id")->constrained()->nullable();
+        });
+
+        Schema::table('user_cnaes', function (Blueprint $table) {
+            $table->foreignId("cnae_id")->constrained()->nullable();
+            $table->foreignId("user_id")->constrained()->nullable();
+            $table->foreignId("cliente_id")->nullable();
+        });
+
+        Schema::table('messages', function (Blueprint $table) {
+            $table->foreignId("user_id")->constrained()->nullable();
+        });       
+
     }
 
     /**

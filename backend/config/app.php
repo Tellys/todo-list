@@ -185,11 +185,6 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         App\Providers\UserModelServiceProvider::class,
-        App\Providers\ProductModelServiceProvider::class,
-        App\Providers\TennisCourtModelServiceProvider::class,
-        App\Providers\TennisCourtDescriptionModelServiceProvider::class,
-        App\Providers\TennisCourtMediaModelServiceProvider ::class,
-        App\Providers\TennisCourtOpeningHourModelServiceProvider::class,
 
 
         /*

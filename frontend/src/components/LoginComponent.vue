@@ -63,7 +63,6 @@
 
 <script>
 import Api from '@/services/Api';
-import { mapActions } from 'vuex';
 // import GoogleAuth from '@/services/authSocialMeida/GoogleAuth'
 // import FacebookAuth from '@/services/authSocialMeida/FacebookAuth'
 
@@ -99,15 +98,10 @@ export default {
     });
   },
   methods: {
-    ...mapActions('tennisCourt', ['registrationPhases']),
 
     ///
     async init() {
       this.isLoggedIn = await Api.isLoggedIn();
-
-      if (this.isLoggedIn) {
-        return await this.registrationPhases();
-      }
     },
 
     /* async loginDefault() {

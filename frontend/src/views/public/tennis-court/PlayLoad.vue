@@ -199,9 +199,6 @@ export default {
     IconFileSvg: defineAsyncComponent(() =>
       import('@/components/icons/IconFileSvg.vue')
     ),
-    NavFiltersComponent: defineAsyncComponent(() =>
-      import('@/components/NavFiltersComponent.vue')
-    ),
     tennisCourtInvolvementComponent: defineAsyncComponent(() =>
       import('@/components/tennisCourt/TennisCourtInvolvementComponent.vue')
     ),

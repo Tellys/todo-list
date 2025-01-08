@@ -1,9 +1,7 @@
 import PaginaHomePublic from '@/views/public/Home';
 
 import User from './public/user';
-import TennisCourt from './public/tennisCourt';
 import Auth from './public/auth';
-import Cart from './public/cart';
 
 const dashboard = [
     {
@@ -14,8 +12,6 @@ const dashboard = [
         //meta: { authOnly: false },
     },
     ...User,
-    ...TennisCourt,
     ...Auth,
-    ...Cart,
 ];
 export default dashboard;

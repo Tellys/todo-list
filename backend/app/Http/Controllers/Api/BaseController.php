@@ -1037,13 +1037,6 @@ class BaseController extends Controller
             $r['db'] = $r['db']->where('user_id', $userId ?? request()->user_id);
         }
 
-        // dd(
-        //     $r['db']
-        //     //->toSql()
-        //     ->get()
-        //     ->toArray()
-        // );
-
         if (request()->has('oderBy')) {
             foreach (request()->oderBy as $oderByK => $oderByV) {
                 $r['db'] = $r['db']->orderBy($selfDBTable . '.' . $oderByK, strtoupper($oderByV));
