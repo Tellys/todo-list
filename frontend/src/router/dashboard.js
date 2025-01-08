@@ -8,6 +8,7 @@ import product from './dashboard/product';
 import tennisCourtOpeningHour from './dashboard/tennisCourtOpeningHour';
 import cart from './dashboard/cart';
 import customerRequest from './dashboard/customerRequest';
+import task from './dashboard/task';
 
 const dashboard = [
     {
@@ -26,6 +27,7 @@ const dashboard = [
     ...tennisCourtOpeningHour,
     ...cart,
     ...customerRequest,
+    ...task,
 ];
 
 export default dashboard;

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string("level")->nullable()->default("info");
             $table->timestamp("time_start");
             $table->timestamp("time_end");
-            $table->string("status")->nullable()->default("in_cart");
+            $table->string("status")->nullable()->default("default");
             $table->tinyInteger("views")->nullable()->default(0)->unsigned();
             $table->foreignId("user_id")->constrained();
             $table->timestamp("expires_at")->nullable();

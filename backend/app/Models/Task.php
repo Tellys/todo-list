@@ -14,7 +14,7 @@ class Task extends NossaModel
         'id',
         'title',
         'body',
-        'level',
+        'tag_id',
         'time_start',
         'time_end',
         'status',
@@ -24,8 +24,6 @@ class Task extends NossaModel
 
         'expiration_notices_sent',
         'expires_at',
-
-        'title',
     ];
     /**
      * Variavel com os campos do BD
@@ -56,7 +54,7 @@ class Task extends NossaModel
                 'fieldType' => 'longText',
                 'label' => 'Mensagem',
                 'placeholder' => 'Mensagem',
-                'validation' => ['nullable', 'max:255', 'regex:/^[\pL\s\-]+$/u'],
+                'validation' => ['nullable', 'max:255'],
                 'maxlength' => 255,
                 //'pattern'=>'[a-zA-Z0-9_-\.]+',
             ],
@@ -66,23 +64,22 @@ class Task extends NossaModel
             ],
 
         ],
-        'level' => [
+        'tag_id' => [
             'html' => [
                 'fieldType' => 'select',
-                'options' => ['info', 'warning', 'success', 'danger', 'other'],
+                'options' => 'db.tags',
                 'validation' => ['nullable'],
-                'label' => 'Tipo de Usuário',
-                'user_level_admin' => true,
+                'label' => 'Tag',
             ],
             'db' => [
-                'type' => 'string',
+                'type' => 'foreignId',
                 'nullable' => true,
-                'default' => 'info',
+                'constrained' => true,
             ],
         ],
         'time_start' => [
             'html' => [
-                'fieldType' => 'datetime',
+                'fieldType' => 'date',
                 'label' => 'Data Início',
                 'placeholder' => 'Data Início',
                 'validation' => ['required'],
@@ -94,10 +91,11 @@ class Task extends NossaModel
         ],
         'time_end' => [
             'html' => [
-                'fieldType' => 'datetime',
+                'fieldType' => 'date',
                 'label' => 'Data Fim',
                 'placeholder' => 'Data Fim',
-                'validation' => ['required','lt:time_start'],
+                //'validation' => ['required','lt:time_start'],
+                'validation' => ['required'],
                 //'columns' => ['container' => 6],
             ],
             'db' => [
@@ -108,12 +106,12 @@ class Task extends NossaModel
             'html' => [
                 'fieldType' => 'select',
                 'label' => 'Status',
-                'options' => ['in_cart','awaiting_payment', 'paid', 'canceled'],
+                'options' => ['default', 'open', 'closed', 'paused'],
             ],
             'db' => [
                 'type' => 'string',
                 'nullable' => true,
-                'default'=>'in_cart',
+                'default'=>'default',
             ],
         ],
         'views' => [
@@ -165,5 +163,10 @@ class Task extends NossaModel
             ],
         ],
     ];
+
+    public function tag()
+    {
+        return $this->belongsTo(Tag::class);//->select(['id', 'name']);
+    }
 }
 

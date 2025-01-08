@@ -44,7 +44,7 @@ export default {
 @import '@/assets/css/style.css';
 
 .bgFull{
-  background: url('@/assets/images/bg/home-jogando-beach-tennis-com-coculos--de-sol-azul-espelhado-e-bone-repto-virado-para-traz.jpg') red no-repeat center center;
+  background: url('@/assets/images/bg/bg.jpg') red no-repeat center center;
   background-size: cover;
 }
 </style>

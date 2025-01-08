@@ -45,5 +45,7 @@ class DatabaseSeeder extends Seeder
         $this->call(TennisCourtInvolvementSeeder::class);        
 
         $this->call(PaymentMethodSeeder::class);        
+
+        $this->call(TagSeeder::class);
     }
 }

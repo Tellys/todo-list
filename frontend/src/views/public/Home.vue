@@ -7,25 +7,34 @@
     <template v-slot:slotPageComponet>
 
       <section class="db-fill-home hero-section">
-        <div class="container text-uppercase ">
 
-          <!-- /// -->
-          <div class="row my-3">
-            <div class="col-md-8 offset-md-2 align-items-center">
 
-              <i class="fa-solid fa-magnifying-glass"></i> Buscar
 
+        <div class="col-md-6 col-lg-6 offset-md-3 my-3">
+            <div class="row">
+              <form class="form" @submit.prevent="">
+                <div class="input-group shadow-lg">
+                  <input type="search" required class="form-control br-0"
+                    placeholder="Pesquise por..." aria-label="Pesquise"
+                    aria-describedby="pesquise-por-quadras" name="q" id="q" title="Use somente letras e números">
+                  <button @click.prevent=""
+                    class="btn btn-outline-secondary border border-0 border-top border-bottom bg-white" type="button"
+                    id="btnCancelSearch"><i class="bi bi-x"></i></button>
+                  <button class="btn btn-secondary bl-0" type="submit" id="pesquise-por-quadras"><i
+                      class="bi bi-search"></i></button>
+                </div>
+              </form>
             </div>
-
           </div>
-          <!-- /// -->
+
+        <div class="container text-uppercase ">
 
           <div class="row px-4">
 
-            <div class="col-6 col-md-4 offset-md-2" role="button" @click="goToRoute('tennisCourtPlayLoad')">
+            <div class="col-6 col-md-4" role="button" @click="goToRoute('dashboardTaskCreate')">
               <div class="d-flex flex-column flex-md-row align-items-center p-4">
-                <div class="p-3 me-md-3 rounded-circle" style="background-color: #C3FF7F">
-                  <i class="fa-solid fa-circle-plus" style="color:#141414"></i>
+                <div class="p-3 me-md-3 rounded" style="background-color: #C3FF7F">
+                  <i class="fa-solid fa-plus" style="color:#141414"></i>
                 </div>
                 <div class="text-center">Adicionar Tarefa</div>
               </div>
@@ -33,20 +42,16 @@
 
             <div class="col-6 col-md-4" role="button" @click="goToRoute('dashboardTennisCourtCreate')">
               <div class="d-flex flex-column flex-md-row align-items-center p-4">
-                <div class="p-3 me-md-3 rounded-circle" style="background-color: #FF7665">
+                <div class="p-3 me-md-3 rounded" style="background-color: #FF7665">
                   <i class="fa-solid fa-calendar-day" style="color:#141414"></i>
                 </div>
                 <div class="text-center">Hoje</div>
               </div>
             </div>
 
-          </div>
-
-          <div class="row px-4 mt-4">
-
-            <div class="col-6 col-md-4 offset-md-2" role="button">
+            <div class="col-6 col-md-4 " role="button">
               <div class="d-flex flex-column flex-md-row align-items-center p-4">
-                <div class="p-3 me-md-3 rounded-circle" style="background-color: #FFE897">
+                <div class="p-3 me-md-3 rounded" style="background-color: #FFE897">
                   <i class="fa-regular fa-calendar-days" style="color:#141414"></i>
                 </div>
                 <div class="text-center">Em Breve</div>
@@ -55,7 +60,7 @@
 
             <div class="col-6 col-md-4" role="button">
               <div class="d-flex flex-column flex-md-row align-items-center p-4">
-                <div class="p-3 me-md-3 rounded-circle" style="background-color: #BFEBFF">
+                <div class="p-3 me-md-3 rounded" style="background-color:#feddcb">
                   <i class="fa-solid fa-tags" style="color:#141414"></i>
                 </div>
                 <div class="text-center">Filtros de etiquetas</div>
@@ -64,7 +69,7 @@
 
             <div class="col-6 col-md-4" role="button">
               <div class="d-flex flex-column flex-md-row align-items-center p-4">
-                <div class="p-3 me-md-3 rounded-circle" style="background-color: #BFEBFF">
+                <div class="p-3 me-md-3 rounded" style="background-color: #c6b598">
                   <i class="fa-solid fa-people-group" style="color:#141414"></i>
                 </div>
                 <div class="text-center">Adicionar equipe</div>
@@ -162,43 +167,5 @@ export default {
   min-height: calc(100svh - 80px);
 }
 
-/* .xs = | Extra Small devices only (portrait phones) less than 576px */
-@media (max-width: 575.98px) {
-  .db-fill-home {
-    background: url('@/assets/images/bg/bg-iphone.jpg') #fff no-repeat bottom right;
-    background-size: contain;
-  }
-}
 
-/* .sm > | Small devices and up (landscape, phones) 576px and up */
-@media (min-width: 576px) and (max-width: 767.98px) {
-  .db-fill-home {
-    background: url('@/assets/images/bg/bg-ipad-pro.jpg') #fff no-repeat bottom right;
-    background-size: contain;
-  }
-}
-
-/* .md > | Medium devices and up (tablets) 768px and up */
-@media (min-width: 768px) and (max-width: 991.98px) {
-  .db-fill-home {
-    background: url('@/assets/images/bg/bg-ipad-pro.jpg') #fff no-repeat bottom right;
-    background-size: contain;
-  }
-}
-
-/* .lg > | Large devices and up (desktops) 992px and up */
-@media (min-width: 992px) and (max-width: 1199.98px) {
-  .db-fill-home {
-    background: url('@/assets/images/bg/bg-web-site.jpg') #fff no-repeat bottom right;
-    background-size: contain;
-  }
-}
-
-/* .xl = | Large devices only (desktops, TV) 1200px and up */
-@media (min-width: 1200px) {
-  .db-fill-home {
-    background: url('@/assets/images/bg/bg-web-site.jpg') #fff no-repeat bottom right;
-    background-size: contain;
-  }
-}
 </style>

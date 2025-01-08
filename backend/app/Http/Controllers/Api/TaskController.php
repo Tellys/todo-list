@@ -21,11 +21,18 @@ class TaskController extends BaseController
         ];
         $this->listVars['uriBase'] = 'task/';
         $this->listVars['heads'] = [
-            'products_default_id',
-            'price',
-            'price_promo',
+            'title',
+            'body',
+            'level',
+            'time_start',
+            'time_end',
+            'status',
+            'views',
+
             'user_id',
-            'created_at',
+
+            'expiration_notices_sent',
+            'expires_at',
         ];
 
         $this->comandos = [
@@ -37,7 +44,9 @@ class TaskController extends BaseController
         ];
 
         $this->searchParams = [
-            'user_id', 'price', 'price_promo'
+            'user_id',
+            'title',
+            'body'
         ];
     }
 
