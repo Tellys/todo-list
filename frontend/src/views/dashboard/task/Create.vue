@@ -6,7 +6,7 @@
 
                     <div class="row d-flex align-items-center justify-content-center h-100 ">
                         <DynamicForm myUri="task/create" myFormMethod="post"
-                        :routeNameSuccessRedirect="{name:'dashboardTaskCreate'}"> 
+                        :routeNameSuccessRedirect="{name:'home'}"> 
                         </DynamicForm>
                     </div>
                 </div>

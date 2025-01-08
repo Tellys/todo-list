@@ -8,7 +8,7 @@
       <div class="p-2 bd-highlight">
         <router-link to="/">
           <picture>
-            <img src="@/assets/images/logo/logo.png" width="150"
+            <img src="@/assets/images/logo-beach-tennis[horizontal].png" width="150"
               alt="{{ `${process.env.VUE_APP_NAME}` }}" />
           </picture>
         </router-link>
@@ -42,7 +42,7 @@ export default {
 @import '@/assets/css/style.css';
 
 .bgFull{
-  background: url('@/assets/images/bg/bg.jpg') red no-repeat center center;
+  background: url('@/assets/images/bg/home-jogando-beach-tennis-com-coculos--de-sol-azul-espelhado-e-bone-repto-virado-para-traz.jpg') red no-repeat center center;
   background-size: cover;
 }
 </style>

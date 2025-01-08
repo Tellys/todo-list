@@ -7,12 +7,12 @@
           <ul class="list-unstyled text-start">
             <li>
               <h3>
-                Sou Proprietário
+                Menu Bottom 1
               </h3>
             </li>
-            <li><router-link class="me-2" to="/">Quero cadastrar</router-link></li>
-            <li><router-link class="me-2" to="/">Planos</router-link></li>
-            <li><router-link class="me-2" to="/">Panel de Controle Proprietário</router-link></li>
+            <li>Quero cadastrar</li>
+            <li>Planos</li>
+            <li>Panel de Controle Proprietário</li>
           </ul>
         </div>
 
@@ -21,14 +21,12 @@
           <ul class="list-unstyled text-start">
             <li>
               <h3>
-                Sou Jogador
+                Menu Bottom 2
               </h3>
             </li>
-            <li><router-link class="me-2" to="/">Quero cadastrar</router-link></li>
-            <li><router-link class="me-2" to="/">Convide um amigo</router-link></li>
-            <li><router-link class="me-2" to="/">Planos Free</router-link></li>
-            <li><router-link class="me-2" to="/">Planos Plus</router-link></li>
-            <li><router-link class="me-2" to="/">Panel de Controle</router-link></li>
+            <li>Planos Free</li>
+            <li>Planos Plus</li>
+            <li>Panel de Controle</li>
           </ul>
         </div>
       </div>
@@ -49,7 +47,7 @@
       </div>
       <div class="d-none d-md-block mx-2">-</div>
       <div><small>
-          <a href="https://www.agenciasolution.com" title="Feito por Agência Solution">Feito por Agência Solution</a>
+          <a href="https://github.com/Tellys/" title="Feito por Tellys Castro">Feito por Tellys Castro</a>
         </small></div>
     </div>
 

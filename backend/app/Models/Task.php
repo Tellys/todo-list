@@ -19,6 +19,7 @@ class Task extends NossaModel
         'time_end',
         'status',
         'views',
+        'check',
 
         'user_id',
 
@@ -89,11 +90,11 @@ class Task extends NossaModel
                 'type' => 'timestamp',
             ],
         ],
-        'time_end' => [
+        'expires_at' => [
             'html' => [
                 'fieldType' => 'date',
-                'label' => 'Data Fim',
-                'placeholder' => 'Data Fim',
+                'label' => 'Expiração',
+                'placeholder' => 'Expiração',
                 //'validation' => ['required','lt:time_start'],
                 'validation' => ['required'],
                 //'columns' => ['container' => 6],
@@ -112,6 +113,19 @@ class Task extends NossaModel
                 'type' => 'string',
                 'nullable' => true,
                 'default'=>'default',
+            ],
+        ],
+        'check' => [
+            'html' => [
+                //'fieldType' => 'select',
+                'fieldType' => NULL,
+                'label' => 'Check',
+                'options' => ['true', 'null'],
+            ],
+            'db' => [
+                'type' => 'string',
+                'nullable' => true,
+                'default'=>null,
             ],
         ],
         'views' => [
@@ -138,17 +152,6 @@ class Task extends NossaModel
                 'type' => 'foreignId',
                 //'nullable'=>true,
                 'constrained' => true,
-            ],
-        ],
-        'expires_at' => [
-            'html' => [
-                'fieldType' => NULL,
-                'validation' => 'date',
-                'label' => 'Data da Expiração',
-            ],
-            'db' => [
-                'type' => 'timestamp',
-                'nullable' => true,
             ],
         ],
         'expiration_notices_sent' => [

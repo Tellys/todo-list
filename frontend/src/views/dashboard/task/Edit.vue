@@ -4,8 +4,8 @@
             <section>
                 <div class="container py-5 h-100">
                     <div class="row d-flex align-items-center justify-content-center h-100">
-                        <h1 class="text-center">Editar dados de quadra</h1>
-                        <p class="text-center">Modifique os dados em nossa base de dados.</p>
+                        <h1 class="text-center">Editar dados da Tarefa</h1>
+                        <p class="text-center">Modifique as informações da tarefa.</p>
                     </div>
                 </div>
             </section>

@@ -994,7 +994,7 @@ class BaseController extends Controller
      * Cria os dados dentro de uma tabela
      * $var = array
      */
-    public function TableBuild($var = [])
+    public function TableBuild($var = [], $userId = null)
     {
         // pega o nome da tabela model
         $selfDBTable = Str::plural(strtolower(Str::snake($this->ClassModel)));
@@ -1033,6 +1033,10 @@ class BaseController extends Controller
             }
         }
 
+        if (request()->has('user_id') or $userId) {
+            $r['db'] = $r['db']->where('user_id', $userId ?? request()->user_id);
+        }
+
         // dd(
         //     $r['db']
         //     //->toSql()
@@ -1042,7 +1046,7 @@ class BaseController extends Controller
 
         if (request()->has('oderBy')) {
             foreach (request()->oderBy as $oderByK => $oderByV) {
-                $r['db'] = $db->orderBy($selfDBTable . '.' . $oderByK, strtoupper($oderByV));
+                $r['db'] = $r['db']->orderBy($selfDBTable . '.' . $oderByK, strtoupper($oderByV));
             }
         }
 
@@ -1050,10 +1054,17 @@ class BaseController extends Controller
             $r['comandos']['restore'] = $r['comandos']['forceDelete'] = null;
         }
 
+        $r['meta']['data'] = $r['db']->count();
+
         $r['db'] = $r['db']->paginate(30, $r['heads'])->toArray();
 
-        $r['meta']['data'] = $db->count();
-        $r['meta']['trash'] = $this->Model->onlyTrashed()->count();
+        $r['meta']['trash'] = $this->Model->onlyTrashed();
+        
+        if (request()->has('user_id') or $userId) {
+            $r['meta']['trash'] = $r['meta']['trash']->where('user_id', $userId ?? request()->user_id);
+        }
+
+        $r['meta']['trash'] = $r['meta']['trash']->count();
 
         foreach ($r['heads'] as $k => $v) {
             switch ($v) {

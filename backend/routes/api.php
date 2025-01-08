@@ -141,6 +141,7 @@ Route::middleware('auth:sanctum')->group(function () {
     //api/broadcasting/auth
 });
 
+Route::get('task/list-items-to-user-id/{user_id?}', '\App\Http\Controllers\Api\TaskController@listItemsToUserId');
 Route::customResource('task', \App\Http\Controllers\Api\TaskController::class); 
 
 

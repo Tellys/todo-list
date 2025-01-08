@@ -14,6 +14,8 @@ import tennisCourtCalendar from './modules/tennisCourtCalendar';
 import cart from './modules/cart';
 import paymentMethod from './modules/payment-method';
 import customerRequest from './modules/customerRequest';
+import task from './modules/task';
+
 
 //import users from "./modules/users";
 //import usersForm from "./modules/components/usersForm";
@@ -37,5 +39,6 @@ export default createStore({
         cart,
         paymentMethod,
         customerRequest,
+        task
     },
 })

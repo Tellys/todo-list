@@ -6,7 +6,7 @@
                     <div class="row d-flex align-items-center justify-content-center h-100">
                         <p class="text-center">Abaixo estão listados os dados do item.</p>
 
-                        <h1 class="text-center">{{ items.name }} - id: {{ items.id }}</h1>
+                        <h1 class="text-center">{{ items.title }} # id: {{ items.id }}</h1>
 
                         <p class="text-center"><router-link :to="{ name: 'dashboardTaskEdit', params: { id: items.id } }"
                                 class="btn btn-warning">
@@ -29,7 +29,15 @@
                                     && i !== 'social'
                                     && i !== 'slug'
                                     && i !== 'description'
+                                    && i !== 'created_at'
+                                    && i !== 'updated_at'
+                                    && i !== 'deleted_at'
+                                    && i !== 'expires_at'
                                 "> <strong>{{ i }}: </strong> {{ item }}</li>
+
+                                <li v-if="i == 'created_at' || i == 'updated_at' || i == 'expires_at'">
+                                    <strong>{{ i }}: </strong> <span class="date-to-format" :data-date="item"></span>
+                                </li>
                             </ul>
 
                             <h2 v-if="items.cnae">Cnae</h2>
@@ -50,6 +58,7 @@
 <script>
 import Api from '@/services/Api';
 import { defineAsyncComponent } from 'vue';
+import moment from 'moment';
 
 export default {
     name: 'TaskShow',
@@ -65,15 +74,27 @@ export default {
             endPointStorage: `${process.env.VUE_APP_API_URL_STORAGE}`,
         }
     },
-    mounted() {
-        this.getItens();
+    async mounted() {
+        await this.getItens();
+        await this.dateFormat()
     },
     methods: {
         async getItens() {
             const response = await Api.get('task/' + this.id);
             console.log('response >>> ', response);
             return this.items = response.data;
-        }
+        },
+
+        async dateFormat(className ='.date-to-format' ){
+            const allEl = document.querySelectorAll(className);
+            console.log('allEl', allEl);
+
+            allEl.forEach(el => {
+                console.log('el.dataset.date', el.dataset.date);
+                el.innerHTML = el.dataset.date ? moment(el.dataset.date).format('DD/MM/YYYY HH:mm') : 'n/a';
+            });
+            return 
+        },
     }
 }
 </script>

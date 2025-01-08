@@ -8,25 +8,6 @@
 
       <section class="db-fill-home hero-section">
 
-
-
-        <div class="col-md-6 col-lg-6 offset-md-3 my-3">
-            <div class="row">
-              <form class="form" @submit.prevent="">
-                <div class="input-group shadow-lg">
-                  <input type="search" required class="form-control br-0"
-                    placeholder="Pesquise por..." aria-label="Pesquise"
-                    aria-describedby="pesquise-por-quadras" name="q" id="q" title="Use somente letras e números">
-                  <button @click.prevent=""
-                    class="btn btn-outline-secondary border border-0 border-top border-bottom bg-white" type="button"
-                    id="btnCancelSearch"><i class="bi bi-x"></i></button>
-                  <button class="btn btn-secondary bl-0" type="submit" id="pesquise-por-quadras"><i
-                      class="bi bi-search"></i></button>
-                </div>
-              </form>
-            </div>
-          </div>
-
         <div class="container text-uppercase ">
 
           <div class="row px-4">
@@ -40,7 +21,7 @@
               </div>
             </div>
 
-            <div class="col-6 col-md-4" role="button" @click="goToRoute('dashboardTennisCourtCreate')">
+            <div class="col-6 col-md-4" role="button">
               <div class="d-flex flex-column flex-md-row align-items-center p-4">
                 <div class="p-3 me-md-3 rounded" style="background-color: #FF7665">
                   <i class="fa-solid fa-calendar-day" style="color:#141414"></i>
@@ -78,6 +59,14 @@
 
           </div>
         </div>
+
+        <div class="container border-3 border-end-0 border-end-0 border-start-0 border-top border-border-dark-subtle mt-3 pt-3 ">
+
+          <div class="row px-4">       
+            <listTasksToMe :myUri="myUri"></listTasksToMe>
+      </div>
+    </div>
+
       </section>
 
       <section class="container">
@@ -104,11 +93,14 @@ export default {
     templateView: defineAsyncComponent(() =>
       import('@/views/template/Template.vue')
     ),
+    listTasksToMe: defineAsyncComponent(() =>
+      import('@/components/task/dashboard/ListTasksToMe.vue')
+    ),    
   },
 
   data() {
     return {
-      geolocation: true,
+      myUri: 'task',
     }
   },
 
