@@ -16,7 +16,7 @@ const actions = {
   ///
   async tasksItemsToMe({ commit }) {
     await Api.get('task/list-items-to-user-id').then( async (r) => {
-      //console.log(r);      
+      //console.log(r);       
       return await commit('GET_TASKS_TO_ME', r);
     })
   },
